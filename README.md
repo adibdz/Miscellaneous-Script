@@ -6,4 +6,5 @@ If you have some time, please review my code to become better. Thank you :)
 
 | Scripts | Description |   
 |---------|-------------|
-| [Vagrantfile](https://github.com/adibdz/Miscellaneous-Script/tree/main/Vagrantfile) | Setting up a bootstrap for Vagrantfile with automation installing `zsh` and `oh-my-zsh` as `user` ( vagrant ). |
+|[Vagrantfile](https://github.com/adibdz/Miscellaneous-Script/tree/main/Vagrantfile)|Setting up a bootstrap for Vagrantfile with automation installing `zsh` and `oh-my-zsh` as `user` ( vagrant )|
+|[Git_Automation](https://github.com/adibdz/Miscellaneous-Script/tree/main/Git_Automation)|Bash script automation for `git push` to github|
