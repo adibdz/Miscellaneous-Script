@@ -7,7 +7,9 @@
 ## 3. Place to your */bin/
 
 de() {
-  echo "[+] $1"
+  local Lc="\e[96m\e[1m"
+  local En="\e[21m\e[0m"
+  echo -e "$Lc[+] $1$En"
 }
 
 if [[ -z $(git --version) ]]; then 
@@ -21,8 +23,14 @@ if [[ ! -d ".git" ]]; then
   exit 1
 fi
 
-git config --global user.email "YOUR GITHUB EMAIL"
-git config --global user.name "YOUR GITHUB USERNAME"
+if [[ ! $(ping -q -c 1 -W 1 8.8.8.8 | grep rtt | wc -l) -eq 1 ]]; then
+  de "Your internet is down"
+  de "Exit"
+  exit 1
+fi
+
+git config --global user.email "adibikar@gmail.com"
+git config --global user.name "adibdz"
 
 extp2g() {
   de "Git already clean :)"
