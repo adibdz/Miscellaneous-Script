@@ -33,9 +33,6 @@ if [[ ! $(ping -q -c 1 -W 1 8.8.8.8 | grep rtt | wc -l) -eq 1 ]]; then
   exit 1
 fi
 
-git config --global user.email "adibikar@gmail.com"
-git config --global user.name "adibdz"
-
 extp2g() {
   de "Git already clean :)"
   exit 1
