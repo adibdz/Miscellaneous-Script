@@ -5,6 +5,10 @@
 ## 1. Download this to any_name.sh
 ## 2. Give 755 permission
 ## 3. Place to your */bin/
+## 4. any_name.sh [m|M|master|Master]
+
+BRNCH="main"
+[[ $1 == "master" || $1 == "Master" || $1 == "m" || $1 == "M" ]] && BRNCH="master"
 
 de() {
   local Lc="\e[96m\e[1m"
@@ -69,7 +73,7 @@ defaultCommit() {
   read -r -p "Your message for commit: " message
   git commit -q -m "$message"
   # git commit -q -m "${message}"
-  git push -q -u origin main
+  git push -q -u origin $BRNCH
   de "All done :)"
 }
 
@@ -85,15 +89,26 @@ commitAll() {
   defaultCommit
 }
 
-gitStatus
-read -r -p "Which number do you want to commit? ([ENTER] to commit all files): " number
-((totalArray=totalArray-1))
-if [[ $number == $'\x000A' ]]; then
-  commitAll
-elif [[ $number -gt 0 && $number -le $totalArray ]]; then
-  commitBy $number
-else
-  echo "Please select the correct number or press [ENTER]"
-fi
+welcome() {
+  de "Default Branch is Main"
+  de "You can can use Master Branch with ./puss2git master"
+  echo
+  echo
+}
 
-exit 0
+main() {
+  welcome
+  gitStatus
+  read -r -p "Which number do you want to commit? ([ENTER] to commit all files): " number
+  ((totalArray=totalArray-1))
+  if [[ $number == $'\x000A' ]]; then
+    commitAll
+  elif [[ $number -gt 0 && $number -le $totalArray ]]; then
+    commitBy $number
+  else
+    echo "Please select the correct number or press [ENTER]"
+  fi
+  exit 0
+}
+
+main
